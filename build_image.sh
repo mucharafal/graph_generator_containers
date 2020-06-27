@@ -1,0 +1,1 @@
+docker build -t converter:v0.1 -f Dockerfile .
