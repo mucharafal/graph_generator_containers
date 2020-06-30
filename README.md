@@ -19,6 +19,9 @@ Data would be imported to `graph.db` database inside local neo4j instalation.
  - created Dockerfile to create image with working [converter](https://github.com/seleythen/ldbc-snb-impls/tree/master/snb-interactive-neo4j)
  - create scripts to prepare output from generator and run converter
 ## Problems
- - strange column `creationDate` in files `social_network/dynamic` folder. This column (its placement in files, as first, and being present in all files) cause most of problems with compatibility of old converter- so I decided to remove it. 
- - merged
- - some bugs in converter- date or columns headers, columns specification
+ - strange column `creationDate` in files `social_network/dynamic` folder. This column (its placed as first, and being present in all files) cause most of problems with compatibility of old converter- so I decided to remove it. 
+ - merged- new version make distinction between dynamic and static part. Imported separately (dynamic first)- failed. So I decided to merge them into one folder. Maybe loading static part first would also work.
+ - some bugs in converter:
+     - date- creation date has different format in new data
+     - columns headers- to person table, during processing by converter, there was added new columns- `email` and `speaks`, but they are not present in header columns specification
+     - add few columns to definition of tables in `converter`- they are hardcoded, their order also.
